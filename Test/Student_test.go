@@ -23,6 +23,15 @@ func TestStudentValidation(t *testing.T) {
 
 		g.Expect(err).To(BeNil())
 	})
+	
+	t.Run("Invalid Name data", func(r *testing.T){
+		n := studentinfo
+		n.Name = ""
+		err := n.Validation()
+
+		g.Expect(err).ToNot(BeNil())
+		g.Expect(err.Error()).To(Equal("Name is required-"))
+	})
 
 	
 }
